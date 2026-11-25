@@ -1,0 +1,30 @@
+# Example: run the Nudge dispatcher from GitHub Actions.
+#
+# This file is an EXAMPLE and is intentionally kept out of .github/workflows/
+# so it doesn't run automatically. To use it:
+#   1. Move it to .github/workflows/cron-dispatch.yml
+#   2. Add a repository secret NUDGE_APP_URL (e.g. https://your-app.vercel.app)
+#      and NUDGE_CRON_SECRET (the same value as the CRON_SECRET env var on Vercel)
+#   3. Enable Actions on the repository
+#
+# Every 5 minutes it calls GET /api/cron/dispatch with the bearer token.
+# The endpoint is idempotent — reminders are delivered at most once per occurrence.
+
+name: Nudge dispatcher
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch: {}
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Nudge cron dispatcher
+        run: |
+          curl -sS --fail-with-body \
+            -H "Authorization: Bearer $NUDGE_CRON_SECRET" \
+            "$NUDGE_APP_URL/api/cron/dispatch"
+        env:
+          NUDGE_APP_URL: ${{ secrets.NUDGE_APP_URL }}
+          NUDGE_CRON_SECRET: ${{ secrets.NUDGE_CRON_SECRET }}
