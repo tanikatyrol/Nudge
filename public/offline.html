@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Offline · Nudge</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #faf7f1;
+      color: #16233f;
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 24px;
+    }
+    .card { max-width: 22rem; }
+    .dot {
+      width: 44px; height: 44px; margin: 0 auto 16px;
+      border-radius: 14px; background: #24355e; position: relative;
+    }
+    .dot::after {
+      content: ''; position: absolute; top: 6px; right: 7px;
+      width: 10px; height: 10px; border-radius: 999px; background: #f5c6af;
+    }
+    h1 { font-size: 1.25rem; margin: 0 0 8px; }
+    p { color: #5a6a8f; font-size: 0.9rem; line-height: 1.6; margin: 0; }
+    button {
+      margin-top: 20px; height: 44px; padding: 0 20px; border: 0;
+      border-radius: 12px; background: #24355e; color: #fff;
+      font-weight: 600; font-size: 0.9rem; cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="dot" aria-hidden="true"></div>
+    <h1>You&apos;re offline</h1>
+    <p>Nudge needs a connection to check your reminders. Everything is safe — reconnect and try again.</p>
+    <button onclick="location.reload()">Try again</button>
+  </div>
+</body>
+</html>
