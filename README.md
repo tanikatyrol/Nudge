@@ -221,7 +221,7 @@ src/
     manifest.ts  icon.svg     PWA
   components/                 UI kit + feature components
   lib/
-    parse.ts  recurrence.ts  time.ts      the reminder engine (timezone-safe)
+    parse.ts · recurrence.ts · time.ts      the reminder engine (timezone-safe)
     supabase/ client·server·admin        RLS-scoped clients; admin is server-only
     push.ts  push-client.ts              Web Push sender / subscriber
     server/ reminders·ai-parse           shared server helpers
